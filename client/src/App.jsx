@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Samples from './components/Samples.jsx';
 import Contact from './components/Contact.jsx';
+import { WhatsAppIcon } from './components/Icons.jsx';
+import { waLink } from './links.js';
 
 export default function App() {
   const [data, setData] = useState(null);
@@ -29,6 +31,7 @@ export default function App() {
         <div className="actions">
           <a className="btn primary" href="#samples">See work samples</a>
           <a className="btn ghost" href="#contact">Contact</a>
+          <a className="btn ghost" href={profile.contact.resumeUrl} download>Download resume</a>
         </div>
       </header>
 
@@ -66,6 +69,9 @@ export default function App() {
         <Contact contact={profile.contact} />
       </main>
       <footer>{profile.name} · Accountant portfolio</footer>
+      <a className="wa-float" href={waLink(profile.contact.whatsapp)} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <WhatsAppIcon size={28} />
+      </a>
     </div>
   );
 }
