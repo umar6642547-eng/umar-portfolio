@@ -31,8 +31,7 @@ export default function App() {
         <div className="actions">
           <a className="btn primary" href="#samples">See work samples</a>
           <a className="btn ghost" href="#contact">Contact</a>
-          <a className="btn ghost" href={profile.contact.resumeUrl} download>Download resume</a>
-        </div>
+<a className="btn ghost" href="/Umar_Farooq_Resume.pdf" download>Download resume</a>        </div>
       </header>
 
       <main>
