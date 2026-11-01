@@ -25,7 +25,7 @@ export default function Contact({ contact }) {
     e.preventDefault();
     setState({ status: 'sending', errors: {}, note: '' });
     try {
-const r = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+const r = await fetch('https://formspree.io/f/xrppykwg', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({ name: form.name, email: form.email, message: form.message, _gotcha: form.website }),
