@@ -25,13 +25,16 @@ export default function Contact({ contact }) {
     e.preventDefault();
     setState({ status: 'sending', errors: {}, note: '' });
     try {
-      const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
-      const j = await r.json().catch(() => ({}));
+const r = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ name: form.name, email: form.email, message: form.message, _gotcha: form.website }),
+      });      const j = await r.json().catch(() => ({}));
       if (r.ok) {
         setForm({ name: '', email: '', message: '', website: '' });
         return setState({ status: 'sent', errors: {}, note: 'Thank you. Your message was sent.' });
       }
-      setState({ status: 'error', errors: j.errors || {}, note: j.error || (j.errors ? 'Please fix the highlighted fields.' : 'Something went wrong.') });
+setState({ status: 'error', errors: {}, note: 'Please check your name and email, then try again.' });
     } catch {
       setState({ status: 'error', errors: {}, note: 'Network error. Please try again or email directly.' });
     }
